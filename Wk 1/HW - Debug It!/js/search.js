@@ -1,3 +1,12 @@
+/*
+ * Name:	Jason Kastrup
+ * Date:	May 11, 2014
+ * Assignment: HW1 Debug It! Assignment
+ */
+
+
+
+
 // Create privatized scope using a self-executing function
 (function(){
 	
@@ -8,19 +17,19 @@
 	;
 	
 	// Validates search query
-	var validqte == function(query){
+	var validate = function(query){
 		
 		// Trim whitespace from start and end of search query
-		while(query.charAt(0) = " "){
+		while(query.charAt(0) === " "){
 			query = query.substring(1, query.length);
 		};
 		while(query.charAt(query.length-1) === ""){
 			query = query.substring(0, query.length-1);
-		;
+		};
 		
 		// Check search length, must have 3 characters
 		if(query.length < 3){
-			alert("Your search query is too small, try again.);
+			alert("Your search query is too small, try again.");
 			
 			// (DO NOT FIX THE LINE DIRECTLY BELOW)
 			searchInput.focus();
@@ -31,7 +40,7 @@
 	};
 	
 	// Finds search matches
-	var search = function(query)
+	var search = function(query){
 		
 		// split the user's search query string into an array
 		var queryArray = query.join(" ");
@@ -40,7 +49,7 @@
 		var results = [];
 
 		// loop through each index of db array
-		for(var i=0, j=db.length; i<j; i++){
+		for(var i=0; j=db.length; i<j; i++){
 		
 			// each db[i] is a single video item, each title ends with a pipe "|"
 			// save a lowercase variable of the video title
@@ -58,8 +67,8 @@
 				if(compare !== -1){
 					results.push(db[i]);
 				};
-			;
-		;
+			};
+		};
 		
 		results.sort();
 		
@@ -110,11 +119,11 @@
 	// THE LINE DIRECTLY BELOW IS CORRECT
 	document.forms[0].onsubmit = function(){
 		var query = searchInput.value;
-		validqte(query);
+		validate(query);
 
         // return false is needed for most events - this will be reviewed in upcoming course material
         // THE LINE DIRECTLY BELOW IS CORRECT
 		return false;
-	;
+	};
 
 })();
