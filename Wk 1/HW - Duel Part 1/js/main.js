@@ -21,12 +21,12 @@
 	var playerOneHealth = 100;
 	var playerTwoHealth = 100;
 	
-	var round=0;
+	var round=0;	// keeps track of the rounds
 	
-	function fight(){
+	function fight(){	// Function controlling the logic behind the fight
 		console.log('in the fight function');
 		
-		alert(playerOneName+":"+playerOneHealth+" *START* "+playerTwoName+":"+playerTwoHealth);
+		alert(playerOneName+":"+playerOneHealth+" *START* "+playerTwoName+":"+playerTwoHealth);	// displays player health and name
 		
 		for(var i=0; i<10; i++){
 			
@@ -42,16 +42,16 @@
 			
 			console.log(playerOneName + ":" + playerOneHealth + " " + playerTwoName + ":" + playerTwoHealth);
 			
-			var results = winnerCheck();
+			var results = winnerCheck();	// checks for a winner and stores in 'results'
 			console.log(results);
 			
-			if(results === "no winner"){
+			if(results === "no winner"){	// Continues to the next round
 				round++;
-				alert(playerOneName+":"+playerOneHealth+" *ROUND " + round + " OVER* "+playerTwoName+":"+playerTwoHealth);
+				alert(playerOneName+":"+playerOneHealth+" *ROUND " + round + " OVER* "+playerTwoName+":"+playerTwoHealth);	// Displays player names, health, and round
 
 			}else{
-				alert(results);
-				break
+				alert(results);	// Displays the winner
+				break	// ends the fight loop
 			};
 			
 		};
@@ -61,24 +61,24 @@
 	function winnerCheck(){
 		console.log("in winnerCheck FN");
 		
-		var result = "no winner";
+		var result = "no winner";	// Default state
 		
-		if(playerOneHealth<1 && playerTwoHealth<1){
+		if(playerOneHealth<1 && playerTwoHealth<1){	// When both players go below 0 in the same round
 			result = "You Both Die"
-		}else if(playerOneHealth<1){
+		}else if(playerOneHealth<1){			// WHen player 1 goes below 0, player two wins
+			result = playerTwoName + " WINS!!";	
+		}else if(playerTwoHealth<1){			// When player 2 goes below 0, player one wins
 			result = playerOneName + " WINS!!";
-		}else if(playerTwoHealth<1){
-			result = playerTwoName + " WINS!!";
 		};
 		
-		return result;
+		return result;	// returns the results
 		
 	};
 	
 	
 	/*******	Program Starts Below	******/
 	console.log('program starts');
-	fight();
+	fight();	// calls the fight function
 	
 }());
 
