@@ -24,8 +24,8 @@
 	*/
 	
 	// Fighters - (name, damage, health)
-	var fighter1 = ["Spiderman", 20, 100];
-	var fighter2 = ["Batman", 20, 100];
+	var fighterA = ["Spiderman", 20, 100];
+	var fighterB = ["Batman", 20, 100];
 	
 		
 	var round=0;	// keeps track of the rounds
@@ -33,28 +33,28 @@
 	function fight(){	// Function controlling the logic behind the fight
 		console.log('in the fight function');
 		
-		alert(playerOneName+":"+playerOneHealth+" *START* "+playerTwoName+":"+playerTwoHealth);	// displays player health and name
+		alert(fighterA[0]+":"+fighterA[2]+" *START* "+fighterB[0]+":"+fighterB[2]);	// displays player health and name
 		
 		for(var i=0; i<10; i++){
 			
 			// random formula is - Math.floor(Math.random() * (max - min) + min);
-			var minDamage1 = figher1[1] * .5;
-			var minDamage2 = figher2[1] * .5;
-			var f1 = Math.floor(Math.random()*(fighter1[1] - minDamage1)+minDamage1);
-			var f2 = Math.floor(Math.random()*(fighter2[1] - minDamage2)+minDamage2);
+			var minDamage1 = fighterA[1] * .5;
+			var minDamage2 = fighterB[1] * .5;
+			var f1 = Math.floor(Math.random()*(fighterA[1] - minDamage1)+minDamage1);
+			var f2 = Math.floor(Math.random()*(fighterB[1] - minDamage2)+minDamage2);
 			
 			// inflict damage
-			fighter1[2] -= f1;
-			fighter2[2] -= f2;
+			fighterA[2] -= f1;
+			fighterB[2] -= f2;
 			
-			console.log(fighter1[0] + ":" + fighter1[2] + " " + fighter2[0] + ":" + fighter2[2]);
+			console.log(fighterA[0] + ":" + fighterA[2] + " " + fighterB[0] + ":" + fighterB[2]);
 			
 			var results = winnerCheck();	// checks for a winner and stores in 'results'
 			console.log(results);
 			
 			if(results === "no winner"){	// Continues to the next round
 				round++;
-				alert(fighter1[0]+":"+fighter1[2]+" *ROUND " + round + " OVER* "+fighter2[0]+":"+fighter2[2]);	// Displays player names, health, and round
+				alert(fighterA[0]+":"+fighterA[2]+" *ROUND " + round + " OVER* "+fighterB[0]+":"+fighterB[2]);	// Displays player names, health, and round
 
 			}else{
 				alert(results);	// Displays the winner
@@ -70,12 +70,12 @@
 		
 		var result = "no winner";	// Default state
 		
-		if(fighter1[2]<1 && fighter2[2]<1){	// When both players go below 0 in the same round
+		if(fighterA[2]<1 && fighterB[2]<1){	// When both players go below 0 in the same round
 			result = "You Both Die"
-		}else if(fighter1[2]<1){			// WHen player 1 goes below 0, player two wins
-			result = fighter2[0] + " WINS!!";	
-		}else if(fighter2[2]<1){			// When player 2 goes below 0, player one wins
-			result = fighter1[0] + " WINS!!";
+		}else if(fighterA[2]<1){			// WHen player 1 goes below 0, player two wins
+			result = fighterB[0] + " WINS!!";	
+		}else if(fighterB[2]<1){			// When player 2 goes below 0, player one wins
+			result = fighterA[0] + " WINS!!";
 		};
 		
 		return result;	// returns the results
