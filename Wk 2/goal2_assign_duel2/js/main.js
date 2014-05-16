@@ -54,7 +54,7 @@
 			
 			if(results === "no winner"){	// Continues to the next round
 				round++;
-				alert(playerOneName+":"+playerOneHealth+" *ROUND " + round + " OVER* "+playerTwoName+":"+playerTwoHealth);	// Displays player names, health, and round
+				alert(fighter1[0]+":"+fighter1[2]+" *ROUND " + round + " OVER* "+fighter2[0]+":"+fighter2[2]);	// Displays player names, health, and round
 
 			}else{
 				alert(results);	// Displays the winner
@@ -70,12 +70,12 @@
 		
 		var result = "no winner";	// Default state
 		
-		if(playerOneHealth<1 && playerTwoHealth<1){	// When both players go below 0 in the same round
+		if(fighter1[2]<1 && fighter2[2]<1){	// When both players go below 0 in the same round
 			result = "You Both Die"
-		}else if(playerOneHealth<1){			// WHen player 1 goes below 0, player two wins
-			result = playerTwoName + " WINS!!";	
-		}else if(playerTwoHealth<1){			// When player 2 goes below 0, player one wins
-			result = playerOneName + " WINS!!";
+		}else if(fighter1[2]<1){			// WHen player 1 goes below 0, player two wins
+			result = fighter2[0] + " WINS!!";	
+		}else if(fighter2[2]<1){			// When player 2 goes below 0, player one wins
+			result = fighter1[0] + " WINS!!";
 		};
 		
 		return result;	// returns the results
