@@ -8,7 +8,15 @@
  */
 
 //Game variables
-(function ()
+var pcNum = 0;	// stores the number to guessed by the user
+var input = document.getElementById("input");
+// console.log(input);
 
+(function (){
+
+	// Generates random integer 1-10
+	pcNum = Math.floor(Math.random() * 10 + 1);
+	// console.log(pcNum);
+	
 
 })();
