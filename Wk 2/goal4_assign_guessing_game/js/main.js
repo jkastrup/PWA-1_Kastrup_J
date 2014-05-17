@@ -12,6 +12,7 @@ var pcNum = 0;	// stores the number to guessed by the user
 var input = document.getElementById("input");	// Gets input text field element
 var output = document.getElementById("output");	//	Gets ouput text element
 var button = document.getElementById("button");	// Gets the button element
+var userGuess = 0;	// Stores the user's guess.
 
 // Self-executing function
 (function (){
@@ -23,9 +24,17 @@ var button = document.getElementById("button");	// Gets the button element
 	button.addEventListener("click", checkGuess, false);
 	
 	function checkGuess(){
+		userGuess = input.value;
+		
+		if(isNumber(userGuess) && (userGuess <=10 && userGuess >= 1)){
+			
+		}else{
+			output.value = "Please enter a NUMBER 1-10";
+		}
 		
 	};
 	
+	// Function created to check if the input is a number
 	function isNumber(num) {
   		return !isNaN(parseFloat(num)) && isFinite(num);
 	};
