@@ -9,8 +9,11 @@
 
 //Game variables
 var pcNum = 0;	// stores the number to guessed by the user
-var input = document.getElementById("input");
-// console.log(input);
+var input = document.getElementById("input");	// Gets input element
+var output = document.getElementById("output");	//	Gets ouput element
+var button = document.getElementsByTagName("button");	// gets the button element
+
+
 
 (function (){
 
