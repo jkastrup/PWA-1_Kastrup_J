@@ -8,12 +8,12 @@
  */
 
 //Game variables
-var pcNum = 0;	// stores the number to guessed by the user
+var pcNum = 0;									// stores the number to guessed by the user
 var input = document.getElementById("input");	// Gets input text field element
 var output = document.getElementById("output");	//	Gets ouput text element
 var button = document.getElementById("button");	// Gets the button element
-var userGuess = 0;	// Stores the user's guess.
-var numGuess = 0;	// The number of guesses used
+var userGuess = 0;								// Stores the user's guess.
+var numGuess = 0;								// The number of guesses used
 
 
 
@@ -26,6 +26,7 @@ var numGuess = 0;	// The number of guesses used
 	
 	// Adds the event listener to the button
 	button.addEventListener("click", checkGuess, false);
+	
 	
 	// Function used for the onClick event handler
 	function checkGuess(){
@@ -64,6 +65,5 @@ var numGuess = 0;	// The number of guesses used
   		return !isNaN(parseFloat(num)) && isFinite(num);
 	};
 	
-		
 
 })();
