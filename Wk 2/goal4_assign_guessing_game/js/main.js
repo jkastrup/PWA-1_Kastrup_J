@@ -13,6 +13,9 @@ var input = document.getElementById("input");	// Gets input text field element
 var output = document.getElementById("output");	//	Gets ouput text element
 var button = document.getElementById("button");	// Gets the button element
 var userGuess = 0;	// Stores the user's guess.
+var numGuess = 3;	// The number of guesses the user may have
+
+
 
 // Self-executing function
 (function (){
@@ -24,12 +27,22 @@ var userGuess = 0;	// Stores the user's guess.
 	button.addEventListener("click", checkGuess, false);
 	
 	function checkGuess(){
+		
+		// Stores the user input
 		userGuess = input.value;
 		
-		if(isNumber(userGuess) && (userGuess <=10 && userGuess >= 1)){
+		// Checks the input to be a number 1-10
+		if(isNumber(userGuess) && userGuess <=10 && userGuess >=1){
 			
+			if(pcNum == userGuess){
+				output.innerHTML = "YOU WIN!! The number was: " + pcNum;
+			}else if(userGuess > pcNum){
+				output.innerHTML = "TOO HIGH! Try again!";
+			}else if(userGuess < pcNum){
+				output.innerHTML = "TOO LOW! Try again!";
+			}
 		}else{
-			output.value = "Please enter a NUMBER 1-10";
+			output.innerHTML = "Please enter a number, 1-10";
 		}
 		
 	};
