@@ -42,9 +42,10 @@
 	//Fighter Objects
 	var fighters = [{name: "Kabal", damage: 20, health: 100}, 
 		{name: "Kratos", damage: 20, health: 100}];
-	
-	// Keeps track of the rounds
-	var round=1;
+
+	// Global variables for control	
+	var round = 1;		// Keeps track of the rounds
+	var winner = -1;	// Tracks the winning fighter for display purposes (default -1, 0 = fighter1, 1 = fighter2);
 	
 	// Creates an event listener for clicking on the fight button
 	button.addEventListener("click", fight, false);
@@ -86,12 +87,23 @@
 			fighter2_text.innerHTML = fighters[1].name + ": " + fighters[1].health;
 		}else{	// Only satisfying condition is a winner
 			// Displays the results
-			
+			if(winner === 0){		// Fighter 1 wins
+				fighter1_text.innerHTML = results;
+				fighter2_text.innerHTML = fighters[1].name + " has fallen.";
+				round_text.innerHTML = fighters[0].name + " WINS in Round #" + round;
+			}else if(winner === 1){	// Fighter 2 wins
+				fighter1_text.innerHTML = fighters[0].name + " has fallen.";
+				fighter2_text.innerHTML = results;
+				round_text.innerHTML = fighters[1].name + " WINS in Round #" + round;
+			}else{	// both died
+				fighter1_text.innerHTML = fighters[0].name + " has fallen.";
+				fighter2_text.innerHTML = fighters[1].name + " has fallen.";
+				round_text.innerHTML = results;
+			}
 			
 			// Disables the 'Fight' button
 			button.removeEventListener("click", fight, false);
-			document.getElementsByClassName("buttonblue").innerHTML = "FINISHED";
-			
+			document.getElementById("btn_text").innerHTML = "FINISHED";			
 		}
 		
 		/*	 Old Code
@@ -112,11 +124,14 @@
 		var result = "no winner";
 		
 		if(fighters[0].health < 1 && fighters[1].health < 1){	// Occurs if both fighters are at/below 0 health
-			result = "You Both Die!";
+			result = "BOTH fighters have FALLEN!";
+			winner = 2;	// stores that both fighters died
 		}else if(fighters[0].health < 1){			// Occurs when fighter 1 is at/below 0 health
 			result = fighters[1].name + " WINS!!";
+			winner = 1;	// stores that fighter 2 won
 		}else if(fighters[1].health < 1){			// Occurs when fighter 2 is at/below 0 health
 			result = fighters[0].name + " WINS!!";
+			winner = 0;	// stores that fighter 1 won
 		}
 		
 		// Gives the user the result of winnerCheck
