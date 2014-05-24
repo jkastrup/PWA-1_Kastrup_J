@@ -4,12 +4,17 @@
  * Assignment: The Duel #3
  */
 
+/**
+ * Some code from Week 2 still remains and is commented out.  
+ * Some was deleted to make the code more legible.
+ */
+
 // self-executing function
 (function(){
 	
 	console.log("** FIGHT **");
 	
-	/*
+	/* (old code)
 	// player name
 	var playerOneName = "Spiderman";
 	var playerTwoName = "Batman";
@@ -30,7 +35,7 @@
 	
 	// Stores HTML elements in variables
 	var fighter1_text = document.getElementById("kabal");
-	var fighter2_text = document.getElementByID("kratos");
+	var fighter2_text = document.getElementById("kratos");
 	var round_text = document.getElementById("round");
 	var button = document.getElementById("fight_btn");
 	
@@ -44,24 +49,25 @@
 	// Creates an event listener for clicking on the fight button
 	button.addEventListener("click", fight, false);
 	
+	// Sets up the page with proper labels
+	round_text.innerHTML = "Click 'FIGHT BUTTON' to start!";
+	fighter1_text.innerHTML = fighters[0].name + ": " + fighters[0].health;
+	fighter2_text.innerHTML = fighters[1].name + ": " + fighters[1].health;
+	
 	function fight(){	// Function controlling the logic behind the fight
 		console.log('in the fight function');
 		
-		round_text.innerHTML = "Click 'FIGHT BUTTON' to start!";
-		fighter1_text.innerHTML = fighters[0].name + ": " + fighters[0].health;
-		fighter2_text.innerHTML = fighters[1].name + ": " + fighters[1].health;
-		
-		// Determines the damage done by each fighter 
+		// Determines the damage done by each fighter (old code)
 		//var f1 = Math.floor(Math.random()*(fighterA[1] - minDamage1)+minDamage1);
 		//var f2 = Math.floor(Math.random()*(fighterB[1] - minDamage2)+minDamage
-		var f1d = Math.floor(Math.random() * fighters[0].damage + fighters[0].danage * .5);
-		var f2d = Math.floor(Math.random() * fighters[1].damage + fighters[1].danage * .5);
+		var f1d = Math.floor(Math.random() * fighters[0].damage + fighters[0].damage * .5);
+		var f2d = Math.floor(Math.random() * fighters[1].damage + fighters[1].damage * .5);
 			
-		// inflict damage
+		// inflict damage (old code)
 		//fighterA[2] -= f1;
 		//fighterB[2] -= f2;		
-		fighters[0].health -= f2d;
-		fighters[1].health -= f1d;
+		fighters[0].health -= f1d;
+		fighters[1].health -= f2d;
 		
 		// Displays current health of each fighter
 		console.log(fighters[0].name + ": " + fighters[0].health + " -- " + fighters[1].name + ": " + fighters[1].health);
@@ -74,8 +80,21 @@
 		round_text.innerHTML = "ROUND #" + round + " Results:";
 		round++;
 		
+		// Two options: No winner displays fighter names and health, Winner deactivates the game and displays the winner
+		if(results === "no winner"){
+			fighter1_text.innerHTML = fighters[0].name + ": " + fighters[0].health;
+			fighter2_text.innerHTML = fighters[1].name + ": " + fighters[1].health;
+		}else{	// Only satisfying condition is a winner
+			// Displays the results
+			
+			
+			// Disables the 'Fight' button
+			button.removeEventListener("click", fight, false);
+			document.getElementsByClassName("buttonblue").innerHTML = "FINISHED";
+			
+		}
 		
-		/*	
+		/*	 Old Code
 		if(results === "no winner"){	// Continues to the next round
 			round++;
 			alert(fighterA[0]+":"+fighterA[2]+" *ROUND " + round + " OVER* "+fighterB[0]+":"+fighterB[2]);	// Displays player names, health, and round
@@ -99,9 +118,12 @@
 		}else if(fighters[1].health < 1){			// Occurs when fighter 2 is at/below 0 health
 			result = fighters[0].name + " WINS!!";
 		}
+		
+		// Gives the user the result of winnerCheck
+		return result;
 	}
 	
-	/*
+	/* (Old code)
 	function winnerCheck(){
 		console.log("in winnerCheck FN");
 		
