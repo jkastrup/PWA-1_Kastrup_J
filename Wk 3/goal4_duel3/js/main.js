@@ -78,15 +78,15 @@
 		console.log(results);
 		
 		//Round results and round increment
-		round_text.innerHTML = "ROUND #" + round + " Results:";
+		round_text.innerHTML = "ROUND #" + round + " Results Above";
 		round++;
 		
-		// Two options: No winner displays fighter names and health, Winner deactivates the game and displays the winner
+		// Two options: No winner displays fighter names and health, A winner deactivates the game and displays the winner
 		if(results === "no winner"){
 			fighter1_text.innerHTML = fighters[0].name + ": " + fighters[0].health;
 			fighter2_text.innerHTML = fighters[1].name + ": " + fighters[1].health;
 		}else{	// Only satisfying condition is a winner
-			// Displays the results
+			// Displays the proper results
 			if(winner === 0){		// Fighter 1 wins
 				fighter1_text.innerHTML = results;
 				fighter2_text.innerHTML = fighters[1].name + " has fallen.";
