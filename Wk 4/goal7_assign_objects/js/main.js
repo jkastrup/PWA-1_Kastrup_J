@@ -6,17 +6,23 @@
 // Self executing function
 (function(){
 	
-	// Array of names to be randomly selected
+	// Array of names to be randomly selected and the amount of people to be created
 	var names = ["Jason", "John", "Lauren", "Sara", "Garek"];
-	// Stores the total number of people to be used
 	var numPeople = 3;
-	// An array that will be used to store the created Person objects
+	
+	// An array that will be used to store the created Person objects and the interval to update their actions
 	var allPeople = [];
-	// Will store the interval timer to update each person's action
 	var interval;
 	
-
-
+	
+	for(i = 0; i < numPeople; i++){
+		
+		var nameIndex = Math.floor(Math.random() * names.length);
+		
+		// Creates a new Person object (from person.js) each iteration with a random name, and a new row
+		var person = new Person(names[nameIndex], i + 1);
+		
+	}
 
 
 
