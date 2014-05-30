@@ -27,7 +27,7 @@
 		this.action = Person.actions[Math.floor(Math.random() * Person.actions.length)];
 		
 		// Displays the first action of the person in the proper row (Actions will be updated randomly)
-		var elementID = document.getElementById("R" + this.row + "c3");
+		var elementID = document.getElementById("r" + this.row + "c3");
 		elementID.innerHTML = this.action;
 	}
 	
