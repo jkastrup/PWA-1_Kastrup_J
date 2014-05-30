@@ -14,21 +14,40 @@
 	var allPeople = [];
 	var interval;
 	
+	console.log(names + " " + numPeople);
+	
 	
 	for(i = 0; i < numPeople; i++){
-		
+		// Stores a random index used to determine the name of the person
 		var nameIndex = Math.floor(Math.random() * names.length);
 		
 		// Creates a new Person object (from person.js) each iteration with a random name, and a new row
 		var person = new Person(names[nameIndex], i + 1);
 		
+		console.log("Index#: " + nameIndex + ", Person: " + person);
+		
 	}
 
 
 	function populateHTML(data, field){
-		var elementID = document.getElementById(data);
-		elementID.innerHTML = field;
+		console.log("Data: " + data + " Field: " + field);
+		
+		// Gets and stores the page location of the person's property 
+		var elementID = document.getElementById(field);
+		
+		// Updates the HTML text of the person's property 
+		elementID.innerHTML = data;
 	}
+	
+	
+	// runUpdate function: calls the update() method of the Person object for every person in the array
+	function runUpdate(){
+		allPeople.forEach(function(person)){
+			console.log(person);
+			person.update();
+		}
+	}
+	
 
 
 }());
