@@ -14,7 +14,7 @@
 	var allPeople = [];
 	var interval;
 	
-	console.log(names + " " + numPeople);
+	// console.log(names + " " + numPeople);
 	
 	
 	for(i = 0; i < numPeople; i++){
@@ -24,13 +24,29 @@
 		// Creates a new Person object (from person.js) each iteration with a random name, and a new row
 		var person = new Person(names[nameIndex], i + 1);
 		
-		console.log("Index#: " + nameIndex + ", Person: " + person);
+		// console.log("Index#: " + nameIndex + ", Person: " + person);
 		
+		// Updates the page with the new Person information
+		populateHTML(person.name, "r" + (i+1) + "c1");
+		populateHTML(person.job, "r" + (i+1) + "c2");
+		
+		// adds the new person to the array
+		allPeople.push(person);
+		
+		// Cuts out the name used from the nameIndex so it cannot be used again
+		names.splice(nameIndex, 1);
 	}
+	
+	// Ensures that no other intervals are running
+	clearInterval(interval);
+	// Sets the function to run and how long the interval is to be set (from the example)
+	interval = setInterval(runUpdate, 1000 / 30);
 
 
+
+	// populateHTML function:  updates the name and job of the person on the page
 	function populateHTML(data, field){
-		console.log("Data: " + data + " Field: " + field);
+		// console.log("Data: " + data + " Field: " + field);
 		
 		// Gets and stores the page location of the person's property 
 		var elementID = document.getElementById(field);
@@ -40,12 +56,14 @@
 	}
 	
 	
+	
 	// runUpdate function: calls the update() method of the Person object for every person in the array
 	function runUpdate(){
-		allPeople.forEach(function(person)){
-			console.log(person);
-			person.update();
-		}
+		allPeople.forEach( 
+			function(person){
+				person.update();	
+			}
+		);
 	}
 	
 
