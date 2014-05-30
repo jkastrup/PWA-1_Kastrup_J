@@ -25,5 +25,10 @@
 	}
 
 
+	function populateHTML(data, field){
+		var elementID = document.getElementById(data);
+		elementID.innerHTML = field;
+	}
+
 
 }());
